@@ -50,7 +50,7 @@ Or with a specific dataset ID:
 Build the image:
 
 ```bash
-docker build -t openneuro-uploader:latest .
+docker build --platform linux/arm64 -t openneuro-uploader:latest
 ```
 
 Run the upload:
