@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  openneuro-upload:
+    build: .
+    image: openneuro-uploader:latest
+    container_name: openneuro-upload
+    environment:
+      # Set your OpenNeuro API key here or via .env file
+      - OPENNEURO_API_KEY=${OPENNEURO_API_KEY}
+      - OPENNEURO_URL=${OPENNEURO_URL:-https://openneuro.org}
+    volumes:
+      # Mount your local data directory to /upload in the container
+      - ./upload:/upload:ro
+    # Override the default command if needed
+    # command: ["deno", "run", "--allow-all", "https://deno.land/x/openneuro/cli.ts", "upload", "/upload", "--dataset-id", "your-dataset-id"]
